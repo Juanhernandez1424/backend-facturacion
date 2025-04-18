@@ -2,6 +2,7 @@ package com.factura.facturacion.service.client;
 
 import com.factura.facturacion.dto.client.DTOClient;
 import com.factura.facturacion.dto.client.DTOResponseClient;
+import com.factura.facturacion.model.category.Category;
 import com.factura.facturacion.model.client.Client;
 import com.factura.facturacion.repository.client.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,11 @@ public class ClientService {
     }
 
     return null;
+  }
+
+  public Client getClientById(Integer id){
+    return repository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Client doesn't exist"));
   }
 
   public Client createClient(DTOClient dtoClient){
